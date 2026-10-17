@@ -1,0 +1,17 @@
+<h1>Оставить отзыв</h1>
+
+<h2>{{ tour.title }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">
+        Отправить отзыв
+    </button>
+</form>
+
+<a href="{% url 'tour_detail' tour.id %}">
+    Назад
+</a>

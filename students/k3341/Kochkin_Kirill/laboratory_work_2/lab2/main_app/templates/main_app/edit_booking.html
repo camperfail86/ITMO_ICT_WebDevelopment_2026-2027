@@ -1,0 +1,30 @@
+<h1>Изменить бронирование</h1>
+
+<h2>{{ booking.tour.title }}</h2>
+
+<p>
+    Доступно мест для этой брони:
+    {{ available_for_edit }}
+</p>
+
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <p>{{ message }}</p>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">
+        Сохранить изменения
+    </button>
+</form>
+
+<a href="{% url 'my_bookings' %}">
+    Назад
+</a>
